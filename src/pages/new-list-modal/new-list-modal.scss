@@ -1,0 +1,33 @@
+@import '../../theme/variables';
+
+page-new-list-modal {
+  .new-list-modal {
+    background-color: color($colors, primary);
+    .modal {
+      &__close {
+        box-shadow: none;
+        background-color: darken(color($colors, primary), 20%);
+        border-radius: 50%;
+        height: 42px;
+        width: 42px;
+      }
+      &__new-list {
+        margin-top: 40px;
+      }
+      &__label {
+        font-size: 1.2em;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+      &__input {
+        color: color($colors, light);
+        border-bottom: 1px solid color($colors, light);
+        margin-bottom: 50px;
+        ::placeholder {
+          color: color($colors, light);
+        }
+      }
+    }
+  }
+}

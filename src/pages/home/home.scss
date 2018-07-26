@@ -1,3 +1,14 @@
 page-home {
-
+  .item-block {
+    position: relative;
+    border: 0;
+    span {
+      float: right;
+    }
+    .create-date {
+      font-size: .8em;
+      font-style: italic;
+      margin-top: 5px;
+    }
+  }
 }

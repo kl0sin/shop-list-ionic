@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,6 +7,21 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <ion-list>
+          <ion-item *ngFor="let list of shopLists" [ngClass]="{'complete' : list.complete}">
+            {{ list.listName }} <span>{{ list.items }}</span>
+            <div class="create-date">
+              Created: {{ list.createDate }}
+            </div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-fab bottom right>
     <button ion-fab color="primary" (click)="createNewShopList()"><ion-icon name="add"></ion-icon></button>
