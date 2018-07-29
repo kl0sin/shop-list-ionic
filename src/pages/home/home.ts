@@ -3,6 +3,7 @@ import { NavController, ModalController } from 'ionic-angular';
 
 import { NewListModalPage } from '../new-list-modal/new-list-modal';
 import { ShopListProvider } from "../../providers/shop-list/shop-list";
+import { ShopListItemPage } from "../shop-list-item/shop-list-item";
 
 @Component({
   selector: 'page-home',
@@ -10,11 +11,11 @@ import { ShopListProvider } from "../../providers/shop-list/shop-list";
 })
 export class HomePage {
   shopLists: any;
-
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, private shopListProvider: ShopListProvider) {
+  constructor(public navCtrl: NavController,
+              public modalCtrl: ModalController,
+              private shopListProvider: ShopListProvider) {
 
   }
-
   createNewShopList() {
     let newListModal = this.modalCtrl.create(NewListModalPage);
     newListModal.present();
@@ -22,5 +23,8 @@ export class HomePage {
   ionViewWillEnter() {
     this.shopLists = this.shopListProvider.getShopLists();
   }
-
+  openShopList(list) {
+    this.navCtrl.push(ShopListItemPage,{ 'shopList': list });
+    // console.log(list);
+  }
 }

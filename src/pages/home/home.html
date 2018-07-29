@@ -12,7 +12,7 @@
     <ion-row>
       <ion-col col-12>
         <ion-list>
-          <ion-item *ngFor="let list of shopLists" [ngClass]="{'complete' : list.complete}">
+          <ion-item (click)="openShopList(list)" *ngFor="let list of shopLists" [ngClass]="{'complete' : list.complete}">
             {{ list.listName }} <span>{{ list.items }}</span>
             <div class="create-date">
               Created: {{ list.createDate }}
