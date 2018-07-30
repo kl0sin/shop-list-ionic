@@ -13,6 +13,7 @@ import { ListPage } from '../pages/list/list';
 import { NewListModalPage } from '../pages/new-list-modal/new-list-modal';
 import { ShopListProvider } from '../providers/shop-list/shop-list';
 import { ShopListItemPage } from "../pages/shop-list-item/shop-list-item";
+import { NewItemPage } from "../pages/new-item/new-item";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ShopListItemPage } from "../pages/shop-list-item/shop-list-item";
     ListPage,
     NewListModalPage,
     ShopListItemPage,
+    NewItemPage,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { ShopListItemPage } from "../pages/shop-list-item/shop-list-item";
     ListPage,
     NewListModalPage,
     ShopListItemPage,
+    NewItemPage,
   ],
   providers: [
     StatusBar,

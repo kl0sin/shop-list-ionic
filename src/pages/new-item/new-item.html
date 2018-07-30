@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="new-item">
+  <form class="new-item__form form"
+        (ngSubmit)="addNewProduct()">
+    <ion-item>
+      <ion-input type="text"
+                 name="title"
+                 [(ngModel)]="item.name"
+                 placeholder="{{ newItemPlaceHolder }}">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <div class="form__label">
+        {{ productQuantityLabel }}
+      </div>
+      <div class="quantity">
+        <ion-icon name="md-remove"
+                  (click)="decreaseValue()"></ion-icon>
+        <span class="quantity__value">
+          {{ item.quantity }}
+        </span>
+        <ion-icon name="md-add"
+                  (click)="increaseValue()"></ion-icon>
+      </div>
+    </ion-item>
+    <button ion-button type="submit" block>
+      {{ submitButtonText }}
+    </button>
+  </form>
+</ion-content>
