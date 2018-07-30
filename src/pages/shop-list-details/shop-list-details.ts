@@ -9,11 +9,13 @@ import { NewProductPage } from "../new-product/new-product";
   templateUrl: 'shop-list-details.html',
 })
 export class ShopListDetailsPage {
-
   shopList: any;
+  shopListIndex: number;
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams) {
     this.shopList = navParams.get('shopList');
+    this.shopListIndex = navParams.get('shopListIndex');
   }
 
   ionViewDidLoad() {
@@ -22,7 +24,7 @@ export class ShopListDetailsPage {
     this.shopList.complete ? this.shopList.complete = false : this.shopList.complete = true;
   }
   addNewProduct() {
-    this.navCtrl.push(NewProductPage);
+    this.navCtrl.push(NewProductPage, { 'shopListIndex': this.shopListIndex });
   }
 
 }

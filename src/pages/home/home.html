@@ -12,8 +12,8 @@
     <ion-row>
       <ion-col col-12>
         <ion-list>
-          <ion-item (click)="openShopList(list)"
-            *ngFor="let list of shopLists"
+          <ion-item (click)="openShopList(list, i)"
+            *ngFor="let list of shopLists; let i = index"
             [ngClass]="{'complete' : list.complete}">
             {{ list.listName }}
             <span>

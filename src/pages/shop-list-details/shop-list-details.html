@@ -13,10 +13,10 @@
       <ion-col col-12>
         <ion-list class="shop-list__list list">
           <ion-item class="list__item item"
-                    *ngFor="let listItem of shopList.itemsArr"
+                    *ngFor="let product of shopList.products"
                     (click)="toggleActive()"
-                    [ngClass]="{'list__item--complete' : shopList.complete}">
-            <span class="item__label">{{ listItem.itemName }} </span>
+                    [ngClass]="{'list__item--complete' : product.isComplete}">
+            <span class="item__label">{{ product.name }} </span>
             <ion-icon class="item__trash" name="md-trash"></ion-icon>
           </ion-item>
         </ion-list>

@@ -6,11 +6,12 @@ export class ShopListProvider {
 
   shopLists: Array<{listName: string,
     createDate: string,
-    complete: boolean,
+    isComplete: boolean,
     items: number,
-    itemsArr: Array<{
-      itemName: string,
-      complete: boolean }>
+    products: Array<{
+      name: string,
+      quantity: number,
+      isComplete: boolean }>
   }>;
 
   constructor(public http: HttpClient) {
@@ -18,48 +19,52 @@ export class ShopListProvider {
       {
         listName: 'Example list 1',
         createDate: '10/10/18',
-        complete: false,
+        isComplete: false,
         items: 10,
-        itemsArr: [
+        products: [
           {
-            itemName: 'Apples',
-            complete: false,
+            name: 'Apples',
+            quantity: 1,
+            isComplete: false,
           }
         ]
       },
       {
         listName: 'Example list 2',
         createDate: '10/10/18',
-        complete: false,
+        isComplete: false,
         items: 4,
-        itemsArr: [
+        products: [
           {
-            itemName: 'Apples',
-            complete: false,
+            name: 'Apples',
+            quantity: 1,
+            isComplete: false,
           }
         ]
       },
       {
         listName: 'Example list 3',
         createDate: '10/10/18',
-        complete: false,
+        isComplete: false,
         items: 15,
-        itemsArr: [
+        products: [
           {
-            itemName: 'Apples',
-            complete: false,
+            name: 'Apples',
+            quantity: 1,
+            isComplete: false,
           }
         ]
       },
       {
         listName: 'Example list 4',
         createDate: '10/10/18',
-        complete: true,
+        isComplete: true,
         items: 7,
-        itemsArr: [
+        products: [
           {
-            itemName: 'Apples',
-            complete: false,
+            name: 'Apples',
+            quantity: 1,
+            isComplete: false,
           }
         ]
       },
@@ -69,24 +74,28 @@ export class ShopListProvider {
     return this.shopLists;
   }
   addNewList(newList) {
-      let date = new Date();
-      let currentDate = date.getDate();
-      let currentMonth = date.getMonth() + 1;
-      let currentYear = date.getFullYear();
+    let date = new Date();
+    let currentDate = date.getDate();
+    let currentMonth = date.getMonth() + 1;
+    let currentYear = date.getFullYear();
 
-      let actualDate = currentDate + '/' + currentMonth + '/' + currentYear;
+    let actualDate = currentDate + '/' + currentMonth + '/' + currentYear;
 
-      this.shopLists.push({
-        listName: newList,
-        createDate: actualDate,
-        complete: false,
-        items: 0,
-        itemsArr: [
-          {
-            itemName: 'Apples',
-            complete: false,
-          }
-        ]
-      });
-    }
+    this.shopLists.push({
+      listName: newList,
+      createDate: actualDate,
+      isComplete: false,
+      items: 0,
+      products: [
+        {
+          name: 'Apples',
+          quantity: 1,
+          isComplete: false,
+        }
+      ]
+    });
+  }
+  addNewProduct(newProduct) {
+    this.shopLists[newProduct.shopListIndex].products.push(newProduct.product);
+  }
 }

@@ -12,7 +12,7 @@
     <ion-item>
       <ion-input type="text"
                  name="title"
-                 [(ngModel)]="item.name"
+                 [(ngModel)]="product.name"
                  placeholder="{{ newItemPlaceHolder }}">
       </ion-input>
     </ion-item>
@@ -24,7 +24,7 @@
         <ion-icon name="md-remove"
                   (click)="decreaseValue()"></ion-icon>
         <span class="quantity__value">
-          {{ item.quantity }}
+          {{ product.quantity }}
         </span>
         <ion-icon name="md-add"
                   (click)="increaseValue()"></ion-icon>

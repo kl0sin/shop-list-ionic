@@ -23,7 +23,7 @@ export class HomePage {
   ionViewWillEnter() {
     this.shopLists = this.shopListProvider.getShopLists();
   }
-  openShopList(list) {
-    this.navCtrl.push(ShopListDetailsPage,{ 'shopList': list });
+  openShopList(list, index) {
+    this.navCtrl.push(ShopListDetailsPage,{ 'shopList': list, 'shopListIndex': index });
   }
 }
