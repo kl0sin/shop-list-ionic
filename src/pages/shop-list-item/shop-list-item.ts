@@ -15,7 +15,9 @@ export class ShopListItemPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.shopList);
+  }
+  toggleActive() {
+    this.shopList.complete ? this.shopList.complete = false : this.shopList.complete = true;
   }
 
 }

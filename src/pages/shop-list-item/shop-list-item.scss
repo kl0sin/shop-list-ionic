@@ -1,3 +1,36 @@
 page-shop-list-item {
-
+  .shop-list {
+    h2 {
+      padding: 15px;
+      text-align: center;
+    }
+    .list {
+      &__item {
+        .label-md {
+          display: flex;
+          justify-content: space-between;
+        }
+        .item {
+          &__label {
+            &:hover {
+              cursor: pointer;
+            }
+          }
+          &__trash {
+            transition: .3s;
+            color: color($colors, grey);
+            &:hover {
+              color: color($colors, danger);
+              cursor: pointer;
+            }
+          }
+        }
+        &--complete {
+          font-style: italic;
+          text-decoration: line-through;
+          color: color($colors, grey);
+        }
+      }
+    }
+  }
 }

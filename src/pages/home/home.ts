@@ -25,6 +25,5 @@ export class HomePage {
   }
   openShopList(list) {
     this.navCtrl.push(ShopListItemPage,{ 'shopList': list });
-    // console.log(list);
   }
 }
