@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { NewItemPage } from "../new-item/new-item";
+import { NewProductPage } from "../new-product/new-product";
 
 @IonicPage()
 @Component({
-  selector: 'page-shop-list-item',
-  templateUrl: 'shop-list-item.html',
+  selector: 'page-shop-list-details',
+  templateUrl: 'shop-list-details.html',
 })
-export class ShopListItemPage {
+export class ShopListDetailsPage {
 
   shopList: any;
   constructor(public navCtrl: NavController,
@@ -21,8 +21,8 @@ export class ShopListItemPage {
   toggleActive() {
     this.shopList.complete ? this.shopList.complete = false : this.shopList.complete = true;
   }
-  addNewItem() {
-    this.navCtrl.push(NewItemPage);
+  addNewProduct() {
+    this.navCtrl.push(NewProductPage);
   }
 
 }

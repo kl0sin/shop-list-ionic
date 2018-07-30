@@ -2,15 +2,27 @@
   <ion-grid>
     <ion-row>
       <ion-col col-12 text-right>
-        <button class="modal__close" ion-button icon-only (click)="closeModal()">
+        <button ion-button icon-only
+                class="modal__close"
+                (click)="closeModal()">
           <ion-icon name="close"></ion-icon>
         </button>
       </ion-col>
       <ion-col col-12 class="modal__new-list">
-        <ion-label class="modal__label" text-center color="light" stacked>Add new shop list</ion-label>
-        <ion-input class="modal__input" [(ngModel)]="listName" color="light" type="text" placeholder="Shop List Name"></ion-input>
+        <ion-label class="modal__label"
+                   text-center color="light" stacked>
+          {{ addNewShopListLabel }}
+        </ion-label>
+        <ion-input class="modal__input"
+                   [(ngModel)]="listName"
+                   color="light"
+                   type="text"
+                   placeholder="{{ addNewShopListPlaceholder }}">
+        </ion-input>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <button ion-button round (click)="addNewShopList()" color="light">Add list</button>
+  <button ion-button round
+          (click)="addNewShopList()"
+          color="light">{{ addNewShopListButtonText }}</button>
 </ion-content>

@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-new-item',
-  templateUrl: 'new-item.html',
+  selector: 'page-new-product',
+  templateUrl: 'new-product.html',
 })
-export class NewItemPage {
+export class NewProductPage {
   item: { name: string, quantity: number };
   newItemPlaceHolder: string;
   submitButtonText: string;

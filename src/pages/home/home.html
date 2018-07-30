@@ -12,8 +12,13 @@
     <ion-row>
       <ion-col col-12>
         <ion-list>
-          <ion-item (click)="openShopList(list)" *ngFor="let list of shopLists" [ngClass]="{'complete' : list.complete}">
-            {{ list.listName }} <span>{{ list.items }}</span>
+          <ion-item (click)="openShopList(list)"
+            *ngFor="let list of shopLists"
+            [ngClass]="{'complete' : list.complete}">
+            {{ list.listName }}
+            <span>
+              {{ list.items }}
+            </span>
             <div class="create-date">
               Created: {{ list.createDate }}
             </div>
@@ -24,6 +29,9 @@
   </ion-grid>
 
   <ion-fab bottom right>
-    <button ion-fab color="primary" (click)="createNewShopList()"><ion-icon name="add"></ion-icon></button>
+    <button ion-fab color="primary"
+            (click)="createNewShopList()">
+      <ion-icon name="add"></ion-icon>
+    </button>
   </ion-fab>
 </ion-content>

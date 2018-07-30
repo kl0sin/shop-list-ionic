@@ -10,9 +10,14 @@ import { ShopListProvider} from "../../providers/shop-list/shop-list";
 })
 export class NewListModalPage {
   listName: string;
+  addNewShopListLabel: string;
+  addNewShopListPlaceholder: string;
+  addNewShopListButtonText: string;
 
   constructor(public viewCtrl: ViewController, public navParams: NavParams, private shopListProvider:ShopListProvider) {
-
+    this.addNewShopListLabel = 'Add new shop list';
+    this.addNewShopListPlaceholder = 'Shop List Name';
+    this.addNewShopListButtonText = 'Add list;'
   }
 
   closeModal() {

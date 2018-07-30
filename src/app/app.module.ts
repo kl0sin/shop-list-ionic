@@ -9,20 +9,18 @@ import { IonicStorageModule } from "@ionic/storage";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { NewListModalPage } from '../pages/new-list-modal/new-list-modal';
 import { ShopListProvider } from '../providers/shop-list/shop-list';
-import { ShopListItemPage } from "../pages/shop-list-item/shop-list-item";
-import { NewItemPage } from "../pages/new-item/new-item";
+import { ShopListDetailsPage } from "../pages/shop-list-details/shop-list-details";
+import { NewProductPage } from "../pages/new-product/new-product";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     NewListModalPage,
-    ShopListItemPage,
-    NewItemPage,
+    ShopListDetailsPage,
+    NewProductPage,
   ],
   imports: [
     BrowserModule,
@@ -34,10 +32,9 @@ import { NewItemPage } from "../pages/new-item/new-item";
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     NewListModalPage,
-    ShopListItemPage,
-    NewItemPage,
+    ShopListDetailsPage,
+    NewProductPage,
   ],
   providers: [
     StatusBar,

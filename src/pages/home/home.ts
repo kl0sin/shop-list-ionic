@@ -3,7 +3,7 @@ import { NavController, ModalController } from 'ionic-angular';
 
 import { NewListModalPage } from '../new-list-modal/new-list-modal';
 import { ShopListProvider } from "../../providers/shop-list/shop-list";
-import { ShopListItemPage } from "../shop-list-item/shop-list-item";
+import { ShopListDetailsPage } from "../shop-list-details/shop-list-details";
 
 @Component({
   selector: 'page-home',
@@ -24,6 +24,6 @@ export class HomePage {
     this.shopLists = this.shopListProvider.getShopLists();
   }
   openShopList(list) {
-    this.navCtrl.push(ShopListItemPage,{ 'shopList': list });
+    this.navCtrl.push(ShopListDetailsPage,{ 'shopList': list });
   }
 }
