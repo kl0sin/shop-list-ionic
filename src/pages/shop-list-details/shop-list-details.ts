@@ -20,8 +20,10 @@ export class ShopListDetailsPage {
 
   ionViewDidLoad() {
   }
-  toggleActive() {
-    this.shopList.complete ? this.shopList.complete = false : this.shopList.complete = true;
+  toggleActive(productIndex) {
+    this.shopList.products[productIndex].isComplete ?
+      this.shopList.products[productIndex].isComplete = false :
+      this.shopList.products[productIndex].isComplete = true;
   }
   addNewProduct() {
     this.navCtrl.push(NewProductPage, { 'shopListIndex': this.shopListIndex });

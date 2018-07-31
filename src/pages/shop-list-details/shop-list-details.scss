@@ -11,7 +11,24 @@ page-shop-list-details {
           justify-content: space-between;
         }
         .item {
+          &__quantity {
+            color: color($colors, grey);
+            width: 20px;
+            position: relative;
+            margin-right: 10px;
+            &:after {
+              content: '';
+              display: block;
+              height: 100%;
+              width: 1px;
+              background-color: color($colors, grey);
+              position: absolute;
+              right: 0;
+              top: 0;
+            }
+          }
           &__label {
+            width: 100%;
             &:hover {
               cursor: pointer;
             }
@@ -26,9 +43,13 @@ page-shop-list-details {
           }
         }
         &--complete {
-          font-style: italic;
-          text-decoration: line-through;
-          color: color($colors, grey);
+          .item {
+            &__label {
+              font-style: italic;
+              text-decoration: line-through;
+              color: color($colors, grey);
+            }
+          }
         }
       }
     }
