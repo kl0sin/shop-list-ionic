@@ -7,7 +7,6 @@ export class ShopListProvider {
   shopLists: Array<{listName: string,
     createDate: string,
     isComplete: boolean,
-    items: number,
     products: Array<{
       name: string,
       quantity: number,
@@ -20,7 +19,6 @@ export class ShopListProvider {
         listName: 'Example list 1',
         createDate: '10/10/18',
         isComplete: false,
-        items: 10,
         products: [
           {
             name: 'Apples',
@@ -33,7 +31,6 @@ export class ShopListProvider {
         listName: 'Example list 2',
         createDate: '10/10/18',
         isComplete: false,
-        items: 4,
         products: [
           {
             name: 'Apples',
@@ -46,7 +43,6 @@ export class ShopListProvider {
         listName: 'Example list 3',
         createDate: '10/10/18',
         isComplete: false,
-        items: 15,
         products: [
           {
             name: 'Apples',
@@ -59,7 +55,6 @@ export class ShopListProvider {
         listName: 'Example list 4',
         createDate: '10/10/18',
         isComplete: true,
-        items: 7,
         products: [
           {
             name: 'Apples',
@@ -85,7 +80,6 @@ export class ShopListProvider {
       listName: newList,
       createDate: actualDate,
       isComplete: false,
-      items: 0,
       products: [
         {
           name: 'Apples',
@@ -97,5 +91,16 @@ export class ShopListProvider {
   }
   addNewProduct(newProduct) {
     this.shopLists[newProduct.shopListIndex].products.push(newProduct.product);
+  }
+  removeProduct(product) {
+    this.shopLists[product.shopListIndex].products.splice(product.productIndex, 1);
+  }
+  toggleActiveProduct(product) {
+    this.shopLists[product.shopListIndex].products[product.productIndex].isComplete ?
+      this.shopLists[product.shopListIndex].products[product.productIndex].isComplete = false :
+      this.shopLists[product.shopListIndex].products[product.productIndex].isComplete = true;
+  }
+  removeShopList(shopList) {
+    this.shopLists.splice(shopList.index, 1);
   }
 }
