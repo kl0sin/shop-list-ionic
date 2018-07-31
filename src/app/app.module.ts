@@ -14,6 +14,11 @@ import { ShopListProvider } from '../providers/shop-list/shop-list';
 import { ShopListDetailsPage } from "../pages/shop-list-details/shop-list-details";
 import { NewProductPage } from "../pages/new-product/new-product";
 
+import { AngularFireModule } from "angularfire2";
+import { AngularFireAuth } from "angularfire2/auth";
+import { AngularFireDatabase } from "angularfire2/database";
+import { firebaseConfig } from "../config";
+
 @NgModule({
   declarations: [
     MyApp,
@@ -26,7 +31,8 @@ import { NewProductPage } from "../pages/new-product/new-product";
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,6 +47,8 @@ import { NewProductPage } from "../pages/new-product/new-product";
     SplashScreen,
     ShopListProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AngularFireAuth,
+    AngularFireDatabase,
   ]
 })
 export class AppModule {}
