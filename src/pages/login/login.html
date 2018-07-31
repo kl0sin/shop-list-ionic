@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>Login page</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="sign-in">
+  <form (ngSubmit)="signIn()"  class="sign-in__form form">
+    <ion-item>
+      <ion-label class="form__label" floating>{{ userEmail }}</ion-label>
+      <ion-input class="form__input" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="form__label" floating>{{ userPassword }}</ion-label>
+      <ion-input class="form__input" type="password"></ion-input>
+    </ion-item>
+    <button class="form__submit" ion-button type="submit" block>
+      {{ submitButtonText }}
+    </button>
+  </form>
+</ion-content>

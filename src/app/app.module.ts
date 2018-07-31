@@ -13,6 +13,7 @@ import { NewListModalPage } from '../pages/new-list-modal/new-list-modal';
 import { ShopListProvider } from '../providers/shop-list/shop-list';
 import { ShopListDetailsPage } from "../pages/shop-list-details/shop-list-details";
 import { NewProductPage } from "../pages/new-product/new-product";
+import { LoginPage } from "../pages/login/login";
 
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuth } from "angularfire2/auth";
@@ -26,6 +27,7 @@ import { firebaseConfig } from "../config";
     NewListModalPage,
     ShopListDetailsPage,
     NewProductPage,
+    LoginPage,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,7 @@ import { firebaseConfig } from "../config";
     NewListModalPage,
     ShopListDetailsPage,
     NewProductPage,
+    LoginPage,
   ],
   providers: [
     StatusBar,

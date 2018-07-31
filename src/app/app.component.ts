@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from "../pages/login/login";
 
 @Component({
   templateUrl: 'app.html'
@@ -21,6 +22,7 @@ export class MyApp {
     this.initializeApp();
     this.pages = [
       { title: 'Home', component: HomePage },
+      { title: 'Login', component: LoginPage },
     ];
   }
 
@@ -28,6 +30,8 @@ export class MyApp {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.nav.setRoot(LoginPage);
+
     });
   }
 

@@ -14,7 +14,6 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
               private shopListProvider: ShopListProvider) {
-
   }
   createNewShopList() {
     let newListModal = this.modalCtrl.create(NewListModalPage);
