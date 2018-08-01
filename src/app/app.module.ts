@@ -14,6 +14,7 @@ import { ShopListProvider } from '../providers/shop-list/shop-list';
 import { ShopListDetailsPage } from "../pages/shop-list-details/shop-list-details";
 import { NewProductPage } from "../pages/new-product/new-product";
 import { LoginPage } from "../pages/login/login";
+import { RegisterPage } from "../pages/register/register";
 
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuth } from "angularfire2/auth";
@@ -28,6 +29,7 @@ import { firebaseConfig } from "../config";
     ShopListDetailsPage,
     NewProductPage,
     LoginPage,
+    RegisterPage,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,7 @@ import { firebaseConfig } from "../config";
     ShopListDetailsPage,
     NewProductPage,
     LoginPage,
+    RegisterPage,
   ],
   providers: [
     StatusBar,

@@ -21,4 +21,15 @@
       {{ submitButtonText }}
     </button>
   </form>
+  <div class="sign-in__create create" text-center>
+    <span class="create__text">
+      {{ noAccountLabelText }}
+    </span>
+    <button class="create__button create__button--google" ion-button type="submit">
+      <ion-icon name="logo-google"></ion-icon> {{ googleSignUpButtonText }}
+    </button>
+    <button class="create__button create__button--sign-up" ion-button type="submit">
+      <ion-icon name="md-person-add"></ion-icon> {{ signUpButtonText }}
+    </button>
+  </div>
 </ion-content>
