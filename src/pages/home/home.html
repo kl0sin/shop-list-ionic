@@ -10,19 +10,23 @@
 <ion-content padding>
   <ion-grid>
     <ion-row>
-      <ion-col col-12>
+      <ion-col col-md-10 offset-md-1 col-sm-12>
         <ion-list>
-          <ion-item (click)="openShopList(list, i)"
-            *ngFor="let list of shopLists; let i = index"
-            [ngClass]="{'complete' : list.complete}">
-            {{ list.listName }}
-            <span>
-              {{ list.products.length }}
-            </span>
-            <div class="create-date">
-              Created: {{ list.createDate }}
-            </div>
-          </ion-item>
+          <ion-row>
+            <ion-col col-lg-3 col-md-6 col-sm-12 (click)="openShopList(list, i)"
+              *ngFor="let list of shopLists; let i = index"
+              [ngClass]="{'complete' : list.complete}">
+              <ion-item>
+                {{ list.listName }}
+                <span>
+                {{ list.products.length }}
+              </span>
+                <div class="create-date">
+                  Created: {{ list.createDate }}
+                </div>
+              </ion-item>
+            </ion-col>
+          </ion-row>
         </ion-list>
       </ion-col>
     </ion-row>

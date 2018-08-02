@@ -14,12 +14,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
+  userEmail: string;
+  userPassword: string;
+  userPasswordConfirm: string;
+  submitButtonText: string;
+  goToLoginText: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.userEmail = 'Email';
+    this.userPassword = 'Password';
+    this.userPasswordConfirm = 'Confirm password';
+    this.submitButtonText = 'Sign up';
+    this.goToLoginText = 'Already have account? Sing-up';
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+  }
+  signUp() {
+    console.log('signUp');
   }
 
 }

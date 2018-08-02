@@ -14,7 +14,8 @@ page-login {
       &__button {
         display: block;
         margin: 10px auto;
-        width: 250px;
+        width: 100%;
+        max-width: 250px;
         .icon {
           margin-right: 10px;
         }

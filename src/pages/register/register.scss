@@ -1,3 +1,31 @@
 page-register {
-
+  .sign-up {
+    .form {
+      &__submit {
+        margin: 30px 0;
+      }
+    }
+    .create {
+      &__text {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        display: block;
+      }
+      &__button {
+        display: block;
+        margin: 10px auto;
+        width: 100%;
+        max-width: 250px;
+        .icon {
+          margin-right: 10px;
+        }
+        &--google {
+          background-color: color($colors, danger);
+          &:hover {
+            background-color: color($colors, danger);
+          }
+        }
+      }
+    }
+  }
 }
