@@ -20,6 +20,8 @@ import { AngularFireModule } from "angularfire2";
 import { AngularFireAuth } from "angularfire2/auth";
 import { AngularFireDatabase } from "angularfire2/database";
 import { firebaseConfig } from "../config";
+import { AuthService } from "../services/auth.service";
+import { NgxErrorsModule } from "@ultimate/ngxerrors";
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { firebaseConfig } from "../config";
     HttpClientModule,
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
+    NgxErrorsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,6 +58,7 @@ import { firebaseConfig } from "../config";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AngularFireAuth,
     AngularFireDatabase,
+    AuthService,
   ]
 })
 export class AppModule {}
