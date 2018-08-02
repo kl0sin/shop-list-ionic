@@ -12,10 +12,17 @@ export class AuthService {
       this.user = user;
     });
   }
-
+  get authenticated(): boolean {
+    return this.user !== null;
+  }
   signInWithEmail(credentials) {
-    return this.afAuth.auth.signInWithEmailAndPassword(credentials.email,
-      credentials.password);
+    return this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password);
+  }
+  signUp(credentials) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password);
+  }
+  getEmail() {
+    return this.user && this.user.email;
   }
 
 }

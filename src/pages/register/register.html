@@ -10,19 +10,50 @@
 <ion-content padding class="sign-up">
   <ion-grid>
     <ion-col col-md-4 offset-md-4>
-      <form (ngSubmit)="signUp()"  class="sign-up__form form">
-        <ion-item>
+      <form class="sign-up__form form"
+            (ngSubmit)="signUp()"
+            [formGroup]="registerForm">
+        <ion-item [ngClass]="{ 'form__item--invalid' : emailErrors.hasError('*', ['touched', 'dirty']) }">
           <ion-label class="form__label" floating>{{ userEmail }}</ion-label>
-          <ion-input class="form__input" type="email"></ion-input>
+          <ion-input class="form__input"
+                     type="email"
+                     formControlName="email"></ion-input>
         </ion-item>
+        <div ngxErrors="email"
+             #emailErrors="ngxErrors">
+          <div class="form__error"
+               [ngxError]="['email', 'required']"
+               [when]="['touched', 'dirty']">
+            Email is required
+          </div>
+        </div>
         <ion-item>
           <ion-label class="form__label" floating>{{ userPassword }}</ion-label>
-          <ion-input class="form__input" type="password"></ion-input>
+          <ion-input class="form__input"
+                     type="password"
+                     formControlName="password"></ion-input>
         </ion-item>
+        <div ngxErrors="password"
+             #passwordErrors="ngxErrors">
+          <div class="form__error"
+               [ngxError]="['password', 'required']"
+               [when]="['touched', 'dirty']">
+            Password is required
+          </div>
+          <div class="form__error"
+               [ngxError]="['password', 'minlength']"
+               [when]="['touched', 'dirty']">
+            Min password length should be {{ passwordErrors.getError('minlength')?.requiredLength }}
+          </div>
+        </div>
+
+        <!-- TODO: ADD COMPARE BOTH PASSWORDS!! -->
         <ion-item>
           <ion-label class="form__label" floating>{{ userPasswordConfirm }}</ion-label>
           <ion-input class="form__input" type="password"></ion-input>
         </ion-item>
+        <div class="form__error">{{ registerError }}</div>
+
         <button class="form__submit" ion-button type="submit" block>
           {{ submitButtonText }}
         </button>

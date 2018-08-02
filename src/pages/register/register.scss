@@ -1,6 +1,18 @@
 page-register {
   .sign-up {
     .form {
+      &__item {
+        &--invalid {
+          .form__label {
+            color: color($colors, danger);
+          }
+        }
+      }
+      &__error {
+        color: color($colors, danger);
+        padding: 10px 16px;
+        text-transform: uppercase;
+      }
       &__submit {
         margin: 30px 0;
       }

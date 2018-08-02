@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthService } from "../../services/auth.service";
 
 import { HomePage } from "../home/home";
+import { RegisterPage } from "../register/register";
 
 @IonicPage()
 @Component({
@@ -56,7 +57,10 @@ export class LoginPage {
         error => this.loginError = error.message
       );
   }
-  createAccount() {
-    console.log('createAccount');
+  signUpWithGoogle() {
+    console.log('signUpWithGoogle');
+  }
+  signUp() {
+    this.navCtrl.setRoot(RegisterPage);
   }
 }

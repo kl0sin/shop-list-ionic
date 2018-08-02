@@ -49,7 +49,7 @@
             Min password length should be {{ passwordErrors.getError('minlength')?.requiredLength }}
           </div>
         </div>
-        <div class="form__error">{{loginError}}</div>
+        <div class="form__error">{{ loginError }}</div>
 
         <button class="form__submit" ion-button type="submit" block>
           {{ submitButtonText }}
@@ -59,10 +59,12 @@
         <span class="create__text">
           {{ noAccountLabelText }}
         </span>
-        <button class="create__button create__button--google" ion-button type="submit">
+        <button class="create__button create__button--google" ion-button type="submit"
+                (click)="signUpWithGoogle()">
           <ion-icon name="logo-google"></ion-icon> {{ googleSignUpButtonText }}
         </button>
-        <button class="create__button create__button--sign-up" ion-button type="submit">
+        <button class="create__button create__button--sign-up" ion-button type="submit"
+                (click)="signUp()">
           <ion-icon name="md-person-add"></ion-icon> {{ signUpButtonText }}
         </button>
       </div>
