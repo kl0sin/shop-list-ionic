@@ -24,5 +24,8 @@ export class AuthService {
   getEmail() {
     return this.user && this.user.email;
   }
+  logOut(): Promise<void> {
+    return this.afAuth.auth.signOut();
+  }
 
 }

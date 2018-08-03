@@ -10,6 +10,13 @@
       <button menuClose ion-item *ngFor="let page of pages" (click)="openPage(page)">
         {{page.title}}
       </button>
+      <div class="user" *ngIf="auth.authenticated">
+        <span>Email:</span> {{ auth.getEmail() }}
+        <button menuClose ion-button blocked
+                (click)="logOut()">
+          Logout
+        </button>
+      </div>
     </ion-list>
   </ion-content>
 
