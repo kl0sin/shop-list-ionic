@@ -21,6 +21,11 @@ export class LoginPage {
   googleSignUpButtonText: string;
   signUpButtonText: string;
 
+  // error massages
+  emailRequired: string;
+  passwordRequired: string;
+  passwordLength: string;
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private auth: AuthService,
@@ -31,6 +36,9 @@ export class LoginPage {
     this.noAccountLabelText = 'Don\'t have account?';
     this.googleSignUpButtonText = 'Log in with google';
     this.signUpButtonText = 'Sign up';
+    this.emailRequired = 'Email is required';
+    this.passwordRequired = 'Password is required';
+    this.passwordLength = 'Min password length should be ';
 
     this.loginForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],

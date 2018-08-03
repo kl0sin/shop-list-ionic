@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from "@angular/forms";
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthService } from "../../services/auth.service";
+import { comparePasswordsService } from "../../services/comparePasswords.service";
 
 import { HomePage } from "../home/home";
 
@@ -19,6 +20,13 @@ export class RegisterPage {
   submitButtonText: string;
   goToLoginText: string;
 
+  // form valid errors
+  emailRequired: string;
+  passwordRequired: string;
+  passwordConfirmRequired: string;
+  passwordNotMatch: string;
+  passwordMinLength: string;
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private auth: AuthService,
@@ -28,10 +36,18 @@ export class RegisterPage {
     this.userPasswordConfirm = 'Confirm password';
     this.submitButtonText = 'Sign up';
     this.goToLoginText = 'Already have account? Sing-up';
+    this.passwordRequired = 'Password is required';
+    this.emailRequired= 'Email is required';
+    this.passwordConfirmRequired = 'You need to confirm your password';
+    this.passwordNotMatch = 'Password does not match';
+    this.passwordMinLength = 'Min password length should be ';
 
     this.registerForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+    }, {
+      validator: comparePasswordsService.validate.bind(this)
     })
   }
 

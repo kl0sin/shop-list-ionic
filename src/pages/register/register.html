@@ -24,10 +24,10 @@
           <div class="form__error"
                [ngxError]="['email', 'required']"
                [when]="['touched', 'dirty']">
-            Email is required
+            {{ emailRequired }}
           </div>
         </div>
-        <ion-item>
+        <ion-item [ngClass]="{ 'form__item--invalid' : passwordErrors.hasError('*', ['touched', 'dirty']) }">
           <ion-label class="form__label" floating>{{ userPassword }}</ion-label>
           <ion-input class="form__input"
                      type="password"
@@ -38,23 +38,51 @@
           <div class="form__error"
                [ngxError]="['password', 'required']"
                [when]="['touched', 'dirty']">
-            Password is required
+            {{ passwordRequired }}
           </div>
           <div class="form__error"
                [ngxError]="['password', 'minlength']"
                [when]="['touched', 'dirty']">
-            Min password length should be {{ passwordErrors.getError('minlength')?.requiredLength }}
+            {{ passwordMinLength + passwordErrors.getError('minlength')?.requiredLength }}
           </div>
         </div>
 
-        <!-- TODO: ADD COMPARE BOTH PASSWORDS!! -->
-        <ion-item>
+        <ion-item [ngClass]="{ 'form__item--invalid' : registerForm.errors?.doesMatchPassword || confirmPasswordErrors.hasError('*', ['touched', 'dirty']) || registerForm.controls.confirmPassword.errors?.required && registerForm.controls.confirmPassword.touched}">
           <ion-label class="form__label" floating>{{ userPasswordConfirm }}</ion-label>
-          <ion-input class="form__input" type="password"></ion-input>
+          <ion-input class="form__input" type="password"
+                     formControlName="confirmPassword"></ion-input>
         </ion-item>
-        <div class="form__error">{{ registerError }}</div>
+        <div ngxErrors="confirmPassword"
+             #confirmPasswordErrors="ngxErrors">
+          <div class="form__error"
+               [ngxError]="['confirmPassword', 'required']"
+               [when]="['touched', 'dirty']">
+            {{ passwordRequired }}
+          </div>
+          <div class="form__error"
+               [ngxError]="['confirmPassword', 'minlength']"
+               [when]="['touched', 'dirty']">
+            {{ passwordMinLength + confirmPasswordErrors.getError('minlength')?.requiredLength }}
+          </div>
+        </div>
+        <div class="form__error"
+             *ngIf="registerForm.controls.confirmPassword.errors?.required && registerForm.controls.confirmPassword.touched">
+          {{ passwordConfirmRequired }}
+        </div>
+        <div class="form__error"
+             *ngIf="registerForm.errors?.doesMatchPassword">
+          {{ passwordNotMatch }}
+        </div>
+        <div class="form__error"
+             *ngIf="registerError" >
+          {{ registerError }}
+        </div>
+        <div class="form__error form__error--background">
+          Some error
+        </div>
 
-        <button class="form__submit" ion-button type="submit" block>
+        <button class="form__submit" ion-button type="submit" block
+                [disabled]="!registerForm.valid">
           {{ submitButtonText }}
         </button>
       </form>
