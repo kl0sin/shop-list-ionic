@@ -66,7 +66,10 @@ export class LoginPage {
       );
   }
   signUpWithGoogle() {
-    console.log('signUpWithGoogle');
+    this.auth.signInWithGoogle().then(
+      () => this.navCtrl.setRoot(HomePage),
+      error => console.log(error.message)
+    );
   }
   signUp() {
     this.navCtrl.setRoot(RegisterPage);

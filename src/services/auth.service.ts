@@ -27,5 +27,21 @@ export class AuthService {
   logOut(): Promise<void> {
     return this.afAuth.auth.signOut();
   }
-
+  signInWithGoogle(): any {
+    return this.oauthSignIn(new firebase.auth.GoogleAuthProvider());
+  }
+  private oauthSignIn(provider: AuthProvider) {
+    if (!(<any>window).cordova) {
+      return this.afAuth.auth.signInWithPopup(provider);
+    } else {
+      return this.afAuth.auth.signInWithRedirect(provider)
+        .then(() => {
+          return this.afAuth.auth.getRedirectResult().then( result => {
+            console.log(result);
+          }).catch(function(error) {
+            alert(error.message);
+          });
+        });
+    }
+  }
 }
