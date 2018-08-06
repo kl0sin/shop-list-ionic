@@ -21,14 +21,14 @@ export class ShopListDetailsPage {
   ionViewDidLoad() {
   }
   toggleActiveProduct(productIndex) {
-    // this.shopListProvider.toggleActiveProduct( { shopListIndex: this.shopListIndex, productIndex: productIndex });
+    let state = this.shopList.products[productIndex].isComplete;
+    this.databaseService.updateProductState(this.shopList.key, productIndex, !state);
   }
   addNewProduct() {
     this.navCtrl.push(NewProductPage, { 'shopListKey': this.shopList.key});
   }
   removeProduct(productIndex) {
     this.databaseService.removeProduct(this.shopList.key, productIndex);
-    // this.shopListProvider.removeProduct({ shopListIndex: this.shopListIndex, productIndex: productIndex });
   }
   removeShopList(shopListKey) {
     this.databaseService.removeShopList(shopListKey)

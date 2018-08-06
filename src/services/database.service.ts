@@ -45,7 +45,8 @@ export class DatabaseService {
   addNewProduct(newProduct) {
     return this.database.list('/shopLists/' + newProduct.key).push(newProduct);
   }
-  updateProductState() {
+  updateProductState(shopListKey, productIndex, state) {
+    return this.database.list('/shopLists/' + shopListKey + '/products').update(productIndex.toString(), { isComplete: state })
   }
   removeProduct(shopListKey, productIndex) {
     return this.database.list('/shopLists/' + shopListKey + '/products').remove(productIndex);
