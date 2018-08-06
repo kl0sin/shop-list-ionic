@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DatabaseService } from "../../services/database.service";
 
 @Injectable()
 export class ShopListProvider {
@@ -13,7 +14,8 @@ export class ShopListProvider {
       isComplete: boolean }>
   }>;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+              private database: DatabaseService) {
     this.shopLists = [
       {
         listName: 'Example list 1',
@@ -88,6 +90,13 @@ export class ShopListProvider {
         }
       ]
     });
+    this.database.addNewShopList({
+      listName: newList,
+      createDate: actualDate,
+      isComplete: false,
+      products: []
+    });
+
   }
   addNewProduct(newProduct) {
     this.shopLists[newProduct.shopListIndex].products.push(newProduct.product);

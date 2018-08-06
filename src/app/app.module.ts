@@ -21,6 +21,7 @@ import { AngularFireAuth } from "angularfire2/auth";
 import { AngularFireDatabase } from "angularfire2/database";
 import { firebaseConfig } from "../config";
 import { AuthService } from "../services/auth.service";
+import { DatabaseService } from "../services/database.service";
 import { NgxErrorsModule } from "@ultimate/ngxerrors";
 
 @NgModule({
@@ -59,6 +60,7 @@ import { NgxErrorsModule } from "@ultimate/ngxerrors";
     AngularFireAuth,
     AngularFireDatabase,
     AuthService,
+    DatabaseService,
   ]
 })
 export class AppModule {}

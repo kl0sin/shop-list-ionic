@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { NewProductPage } from "../new-product/new-product";
-import { ShopListProvider } from "../../providers/shop-list/shop-list";
+import { DatabaseService } from "../../services/database.service";
 
 @IonicPage()
 @Component({
@@ -11,29 +11,30 @@ import { ShopListProvider } from "../../providers/shop-list/shop-list";
 })
 export class ShopListDetailsPage {
   shopList: any;
-  shopListIndex: number;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private shopListProvider: ShopListProvider) {
+              private databaseService: DatabaseService) {
     this.shopList = navParams.get('shopList');
-    this.shopListIndex = navParams.get('shopListIndex');
   }
 
   ionViewDidLoad() {
   }
   toggleActiveProduct(productIndex) {
-    this.shopListProvider.toggleActiveProduct( { shopListIndex: this.shopListIndex, productIndex: productIndex });
+    // this.shopListProvider.toggleActiveProduct( { shopListIndex: this.shopListIndex, productIndex: productIndex });
   }
   addNewProduct() {
-    this.navCtrl.push(NewProductPage, { 'shopListIndex': this.shopListIndex });
+    this.navCtrl.push(NewProductPage, { 'shopListKey': this.shopList.key});
   }
   removeProduct(productIndex) {
-    this.shopListProvider.removeProduct({ shopListIndex: this.shopListIndex, productIndex: productIndex });
+    this.databaseService.removeProduct(this.shopList.key, productIndex);
+    // this.shopListProvider.removeProduct({ shopListIndex: this.shopListIndex, productIndex: productIndex });
   }
-  removeShopList() {
-    this.shopListProvider.removeShopList({ index: this.shopListIndex });
-    this.navCtrl.pop();
+  removeShopList(shopListKey) {
+    this.databaseService.removeShopList(shopListKey)
+      .then(
+        () => this.navCtrl.pop(),
+        error => console.log(error.message)
+      );
   }
-
 }

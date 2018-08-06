@@ -18,9 +18,9 @@
               [ngClass]="{'complete' : list.complete}">
               <ion-item>
                 {{ list.listName }}
-                <span>
-                {{ list.products.length }}
-              </span>
+                <span *ngIf="list.products">
+                  {{ list.products.length }}
+                </span>
                 <div class="create-date">
                   Created: {{ list.createDate }}
                 </div>

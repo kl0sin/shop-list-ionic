@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ShopListProvider } from "../../providers/shop-list/shop-list";
+import { DatabaseService } from "../../services/database.service";
 
 @IonicPage()
 @Component({
@@ -12,11 +12,11 @@ export class NewProductPage {
   newItemPlaceHolder: string;
   submitButtonText: string;
   productQuantityLabel: string;
-  shopListIndex: number;
+  shopListKey: number;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private shopListProvider: ShopListProvider) {
+              private databaseService: DatabaseService) {
     this.product = {
       name: '',
       quantity: 1,
@@ -25,7 +25,7 @@ export class NewProductPage {
     this.newItemPlaceHolder = 'Add product';
     this.submitButtonText = 'Add new product';
     this.productQuantityLabel = 'Product quantity';
-    this.shopListIndex = this.navParams.get('shopListIndex');
+    this.shopListKey = this.navParams.get('shopListKey');
   }
   ionViewDidLoad() {
   }
@@ -36,8 +36,13 @@ export class NewProductPage {
     this.product.quantity ++;
   }
   addNewProduct() {
-    this.shopListProvider.addNewProduct({ product: this.product, shopListIndex: this.shopListIndex });
-    this.navCtrl.pop();
+    this.databaseService.addNewProduct({ product: this.product, shopListKey: this.shopListKey })
+      .then(
+        () => this.navCtrl.pop(),
+        error => console.log(error.message)
+      );
+    // this.shopListProvider.addNewProduct({ product: this.product, shopListIndex: this.shopListIndex });
+    // this.navCtrl.pop();
   }
 
 }

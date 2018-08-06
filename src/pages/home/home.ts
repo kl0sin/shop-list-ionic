@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 
 import { NewListModalPage } from '../new-list-modal/new-list-modal';
-import { ShopListProvider } from "../../providers/shop-list/shop-list";
 import { ShopListDetailsPage } from "../shop-list-details/shop-list-details";
+import { DatabaseService } from "../../services/database.service";
 
 @Component({
   selector: 'page-home',
@@ -13,16 +13,16 @@ export class HomePage {
   shopLists: any;
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
-              private shopListProvider: ShopListProvider) {
+              private databaseService: DatabaseService) {
+    this.shopLists = this.databaseService.getShopLists();
   }
   createNewShopList() {
     let newListModal = this.modalCtrl.create(NewListModalPage);
     newListModal.present();
   }
   ionViewWillEnter() {
-    this.shopLists = this.shopListProvider.getShopLists();
   }
-  openShopList(list, index) {
-    this.navCtrl.push(ShopListDetailsPage,{ 'shopList': list, 'shopListIndex': index });
+  openShopList(list) {
+    this.navCtrl.push(ShopListDetailsPage,{ 'shopList': list });
   }
 }
