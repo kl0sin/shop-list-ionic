@@ -41,8 +41,6 @@ export class NewProductPage {
         () => this.navCtrl.pop(),
         error => console.log(error.message)
       );
-    // this.shopListProvider.addNewProduct({ product: this.product, shopListIndex: this.shopListIndex });
-    // this.navCtrl.pop();
   }
 
 }

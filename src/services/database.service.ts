@@ -46,6 +46,15 @@ export class DatabaseService {
     // TODO: figure out how to prevent of creating new key while new product is pushing to products
     return this.database.list('/shopLists/' + newProduct.shopListKey + '/products').push([newProduct.product]);
   }
+  getShopList(shopListKey) {
+    let ShopList = {};
+     this.database.object<ShopListsInterface[]>('/shopLists/' + shopListKey).valueChanges()
+      .subscribe( shopList => {
+        ShopList =  shopList
+      });
+
+     return ShopList
+  }
   updateProductState(shopListKey, productIndex, state) {
     return this.database.list('/shopLists/' + shopListKey + '/products').update(productIndex.toString(), { isComplete: state })
   }

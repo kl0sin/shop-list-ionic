@@ -23,6 +23,6 @@ export class HomePage {
   ionViewWillEnter() {
   }
   openShopList(list) {
-    this.navCtrl.push(ShopListDetailsPage,{ 'shopList': list });
+    this.navCtrl.push(ShopListDetailsPage,{ 'shopList': list, 'shopListKey': list.key });
   }
 }
