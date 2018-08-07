@@ -12,20 +12,19 @@ import { DatabaseService } from "../../services/database.service";
 export class ShopListDetailsPage {
   shopList: any;
   shopListKey: string;
+  products: any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private databaseService: DatabaseService) {
     this.shopList = navParams.get('shopList');
     this.shopListKey = navParams.get('shopListKey');
+    this.products = this.databaseService.getShopList(this.shopListKey);
   }
 
-  ionViewDidLoad() {
-    this.getShopList(this.shopListKey);
-  }
-  toggleActiveProduct(productIndex) {
-    let state = this.shopList.products[productIndex].isComplete;
-    this.databaseService.updateProductState(this.shopList.key, productIndex, !state);
+  toggleActiveProduct(productIndex, productKey) {
+    let state = this.products[productIndex].isComplete;
+    this.databaseService.updateProductState(this.shopList.key, productKey, !state);
   }
   addNewProduct() {
     this.navCtrl.push(NewProductPage, { 'shopListKey': this.shopListKey});
@@ -39,8 +38,5 @@ export class ShopListDetailsPage {
         () => this.navCtrl.pop(),
         error => console.log(error.message)
       );
-  }
-  getShopList(shopListKey) {
-    this.databaseService.getShopList(shopListKey);
   }
 }

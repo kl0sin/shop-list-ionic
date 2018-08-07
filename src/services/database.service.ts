@@ -21,7 +21,7 @@ export class DatabaseService {
 
     this.database.object<ShopListsInterface[]>('/shopLists').valueChanges()
       .subscribe( shopList => {
-        objectToArray(shopList)
+        shopList ? objectToArray(shopList) : ''
       });
 
     const objectToArray = object => {
@@ -43,23 +43,33 @@ export class DatabaseService {
     return this.database.object('/shopLists/' + shopListKey).remove();
   }
   addNewProduct(newProduct) {
-    // TODO: figure out how to prevent of creating new key while new product is pushing to products
-    return this.database.list('/shopLists/' + newProduct.shopListKey + '/products').push([newProduct.product]);
+    return this.database.list('/shopLists/' + newProduct.shopListKey + '/products').push(newProduct.product);
   }
   getShopList(shopListKey) {
-    let ShopList = {};
-     this.database.object<ShopListsInterface[]>('/shopLists/' + shopListKey).valueChanges()
-      .subscribe( shopList => {
-        ShopList =  shopList
+    let productsArr = [];
+
+    this.database.object('/shopLists/' + shopListKey + '/products').valueChanges()
+      .subscribe( products => {
+        products ? objectToArray(products) : ''
       });
 
-     return ShopList
+    const objectToArray = object => {
+      productsArr.length = 0;
+      Object.keys(object).map( objectKey => {
+        let objectItem = object[objectKey];
+        objectItem.key = objectKey;
+        productsArr.push(objectItem);
+      });
+    };
+
+    return productsArr
+
   }
-  updateProductState(shopListKey, productIndex, state) {
-    return this.database.list('/shopLists/' + shopListKey + '/products').update(productIndex.toString(), { isComplete: state })
+  updateProductState(shopListKey, productKey, state) {
+    return this.database.list('/shopLists/' + shopListKey + '/products').update(productKey, { isComplete: state })
   }
-  removeProduct(shopListKey, productIndex) {
-    return this.database.list('/shopLists/' + shopListKey + '/products').remove(productIndex);
+  removeProduct(shopListKey, productKey) {
+    return this.database.list('/shopLists/' + shopListKey + '/products').remove(productKey);
   }
 
 }
