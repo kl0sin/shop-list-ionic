@@ -43,7 +43,8 @@ export class DatabaseService {
     return this.database.object('/shopLists/' + shopListKey).remove();
   }
   addNewProduct(newProduct) {
-    return this.database.list('/shopLists/' + newProduct.key).push(newProduct);
+    // TODO: figure out how to prevent of creating new key while new product is pushing to products
+    return this.database.list('/shopLists/' + newProduct.shopListKey + '/products').push([newProduct.product]);
   }
   updateProductState(shopListKey, productIndex, state) {
     return this.database.list('/shopLists/' + shopListKey + '/products').update(productIndex.toString(), { isComplete: state })
